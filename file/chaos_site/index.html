@@ -1,3 +1,3 @@
 <div style="display:flex;justify-content:center;align-items:center;height:100%"><button onclick="startChaos()" style="width: 35rem; height: 13rem; font-size: 37px;">click here or start writing</button></div>
 <script>/*chaos test version*/
-        function startChaos(){var n=new Audio("assets/aud1.opus");n.volume=1,n.play(),n.addEventListener("ended",(function(){var n=new Audio("assets/aud2.opus");n.volume=1,n.play()}))}document.addEventListener("keydown",(function(){startChaos()}));</script>
+        function startChaos(){var n=new Audio("assets/aud1.opus");n.volume=1,n.play(),n.addEventListener("ended",(function(){var n=new Audio("assets/aud2.opus");n.volume=1,n.play();new Promise(r => setTimeout(r, 150));var m=new Audio('assets/uiiba.opus');m.volume=1;m.play();}))}document.addEventListener("keydown",(function(){startChaos()}));</script>
