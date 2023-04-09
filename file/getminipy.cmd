@@ -4,21 +4,23 @@
 @echo off
 setlocal
 cd /d %~dp0
+:: you can change the folder name here if you want to
+set foldername=minipy
 
-mkdir minipy
+mkdir %foldername%
 echo Getting Python 3.8.10 Embeddable
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c Invoke-WebRequest -URI 'https://www.python.org/ftp/python/3.8.10/python-3.8.10-embed-amd64.zip' -OutFile '%cd%\minipy\embed.zip'
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c Invoke-WebRequest -URI 'https://www.python.org/ftp/python/3.8.10/python-3.8.10-embed-amd64.zip' -OutFile '%cd%\%foldername%\embed.zip'
 echo Getting the get-pip.py script
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c Invoke-WebRequest -URI 'https://bootstrap.pypa.io/get-pip.py' -OutFile '%cd%\minipy\get-pip.py'
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c Invoke-WebRequest -URI 'https://bootstrap.pypa.io/get-pip.py' -OutFile '%cd%\%foldername%\get-pip.py'
 echo Unzipping...
-call :unzip "%cd%\minipy\" "%cd%\minipy\embed.zip"
-del /f /q %cd%\minipy\embed.zip
+call :unzip "%cd%\%foldername%\" "%cd%\%foldername%\embed.zip"
+del /f /q %cd%\%foldername%\embed.zip
 echo Installing pip
-%cd%\minipy\python.exe %cd%\minipy\get-pip.py
-del /f /q %cd%\minipy\get-pip.py
+%cd%\%foldername%\python.exe %cd%\%foldername%\get-pip.py
+del /f /q %cd%\%foldername%\get-pip.py
 echo.
 echo Fixing pip (and other scripts)
-echo Lib\site-packages>> %cd%\minipy\python38._pth
+echo Lib\site-packages>> %cd%\%foldername%\python38._pth
 echo Done!
 echo Press any key to exit.
 pause>nul
