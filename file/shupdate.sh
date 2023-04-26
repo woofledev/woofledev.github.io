@@ -1,4 +1,6 @@
 #!/bin/bash
+# curl -fsSL https://woofledev.github.io/file/shupdate.sh | bash
+
 #colors
 lb="\\e[94m"
 yel="\\e[93m"
