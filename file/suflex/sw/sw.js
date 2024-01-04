@@ -1,12 +1,12 @@
 // downloads the site offline
 var cacheName = "suflex-offline";
 var files = [
-  "/",
-  "/meta.json",
-  "/asset/app.js",
-  "/asset/chkvs.js",
-  "/sw/reg.js",
-  "/sw/sw.js"
+  "/file/suflex", // index
+  "meta.json",
+  "asset/app.js",
+  "asset/chkvs.js",
+  "sw/reg.js",
+  "sw/sw.js"
 ];
 
 
