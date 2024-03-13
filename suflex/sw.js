@@ -1,6 +1,6 @@
 const cache = "suflex:cached:v1";
 const cacheFiles = [
-  "/file/suflex", "index.html",
+  "/suflex", "index.html",
   "assets/index.js",
   "assets/index.css",
   "icon512.png"
