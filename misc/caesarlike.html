@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>caesar-like cipher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>:root{color-scheme: light dark}</style>
+</head>
+<body>
+  <h1>caesar-like cipher</h1>
+  original: <input id="ogalpha" type="text"><br>
+  shuffled: <input id="nalpha" type="text"> <button onclick="shuffle()">shuffle</button>
+  <br><br><br>
+
+  <b>encode (text to ciphered)</b><br>
+  <textarea id="ei" placeholder="input" rows="4" cols="30"></textarea>
+  <textarea id="eo" placeholder="output" rows="4" cols="30" readonly></textarea>
+
+  <br>
+  <b>decode (ciphered to text)</b><br>
+  <textarea id="di" placeholder="input" rows="4" cols="30"></textarea>
+  <textarea id="do" placeholder="output" rows="4" cols="30" readonly></textarea>
+
+
+  <script>
+    let $=s=>document.querySelector(s); 
+    let val=(k,v)=>  !v ? $(k).value : $(k).value=v;
+
+    // alphabet setup
+    val("#ogalpha", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789!@#$&?()+-*/");
+    localStorage.getItem("_al") ? val("#nalpha", localStorage["_al"]) : null;
+
+
+
+    function shuffle() {
+      let str = val("#ogalpha").split('');
+      for (let i=0; i<str.length; i++) {
+        let j = Math.floor(Math.random() * (i + 1)), tmp=str[i];
+        str[i] = str[j];
+        str[j] = tmp;
+      };
+
+      val("#nalpha", str.join(''));
+      localStorage.setItem("_al", str.join(''));
+    };
+
+    function cipher(input, inal, outal) {
+      let out = '';
+      for (let i=0; i<input.length; i++) {
+        let idx = inal.indexOf( input.charAt(i) );
+        idx !== -1
+          ? out += outal.charAt(idx)
+          : out += input.charAt(i);
+      };
+
+      return out;
+    };
+
+    $("#ei").addEventListener("input", e=> // encode
+      val( "#eo", cipher(e.target.value, val("#ogalpha"), val("#nalpha")) )
+    );    
+    
+    $("#di").addEventListener("input", e=> // decode
+      val( "#do", cipher(e.target.value, val("#nalpha"), val("#ogalpha")) )
+    );
+  </script>
+</body>
+</html>
