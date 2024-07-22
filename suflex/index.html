@@ -6,10 +6,8 @@
   <meta property="og:description" content="audio speed manipulation, online">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script defer> navigator.serviceWorker.register("sw.js") </script>
   <link rel="manifest" href="manifest.json" />
-  <script defer>
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
-  </script>
   <link rel="stylesheet" href="assets/index.css">
 </style>
 </head>

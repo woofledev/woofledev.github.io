@@ -1,7 +1,7 @@
 {
   "name": "suflex",
   "description": "audio speed manipulation, online",
-  "start_url": "/file/suflex",
+  "start_url": "/suflex",
   "display": "fullscreen",
   "theme_color": "#090909", "background_color": "#090909",
   "icons": [
