@@ -24,7 +24,12 @@
   <script>(async ()=>{
 		const [myId, callerId, callBtn, remote] = Array.from(document.querySelectorAll('#myId, #callerId, #bCall, #remote'));
 		const localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-    const peer = new Peer({ });
+    const peer = new Peer({ config: {
+		iceServers: [
+			{ url: 'stun:stun1.l.google.com:19302' },
+			{ url: 'stun:stun2.l.google.com:19302' },
+		]
+		} });
 
 		callBtn.addEventListener("click", () => {
 			const pid = callerId.value.trim();
@@ -48,7 +53,7 @@
 
 		peer.on("call", c => {
 			c.answer(localStream);
-			document.body.append(`answered call from ${c.peer}`);
+			document.body.append(`answered call from ${c.peer}\n`);
 
 			c.on("stream", rs => {
 				remote.srcObject = rs;
